@@ -1,5 +1,6 @@
 ## Command line exercise
 
+```
 E:\BotSamples\nodejs-oauth-bot>npm init
 This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
@@ -36,14 +37,18 @@ About to write to E:\BotSamples\nodejs-oauth-bot\package.json:
 
 
 Is this ok? (yes)
+```
 
+```
 E:\BotSamples\nodejs-oauth-bot>npm install --save botbuilder@3.15.0
 npm notice created a lockfile as package-lock.json. You should commit this file.
 npm WARN nodejs-oauth-bot@1.0.0 No repository field.
 
 + botbuilder@3.15.0
 added 86 packages in 8.835s
+```
 
+```
 E:\BotSamples\nodejs-oauth-bot>npm install --save restify
 
 > dtrace-provider@0.8.7 install E:\BotSamples\nodejs-oauth-bot\node_modules\dtrace-provider
@@ -56,21 +61,27 @@ npm WARN nodejs-oauth-bot@1.0.0 No repository field.
 
 + restify@7.2.1
 added 63 packages in 11.154s
+```
+
 
 E:\BotSamples\nodejs-oauth-bot>code .
 
 E:\BotSamples\nodejs-oauth-bot>
 
-## Create your app.js and add the logic
+
+Now, create your app.js and add the logic.
 
 ## .env update
+```
 PS E:\BotSamples\nodejs-oauth-bot> npm install dotenv --save
 npm WARN nodejs-oauth-bot@1.0.0 No repository field.
 
 + dotenv@6.1.0
 added 1 package in 1.688s
+```
 
 ## Teams package for botbuilder
+```
 E:\BotSamples\nodejs-oauth-bot>npm install --save botbuilder-teams
 npm WARN deprecated crypto@1.0.1: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
 npm WARN deprecated node-uuid@1.4.8: Use uuid module instead
@@ -78,6 +89,7 @@ npm WARN nodejs-oauth-bot@1.0.0 No repository field.
 
 + botbuilder-teams@0.2.3
 added 38 packages and updated 6 packages in 5.004s
+```
 
 ## Output
 
