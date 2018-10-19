@@ -70,3 +70,96 @@ npm WARN nodejs-oauth-bot@1.0.0 No repository field.
 + dotenv@6.1.0
 added 1 package in 1.688s
 
+## Teams package for botbuilder
+E:\BotSamples\nodejs-oauth-bot>npm install --save botbuilder-teams
+npm WARN deprecated crypto@1.0.1: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
+npm WARN deprecated node-uuid@1.4.8: Use uuid module instead
+npm WARN nodejs-oauth-bot@1.0.0 No repository field.
+
++ botbuilder-teams@0.2.3
+added 38 packages and updated 6 packages in 5.004s
+
+## Output
+
+"botbuilder-teams" is an extension to "botbuilder" package. So, it is perfectly safe to be used along with other channels. For MS Teams specific channel, you can have your explicit check.
+
+<code>
+    bot.dialog('/', [
+        function(session){
+            #if(session.message.source==='msteams'){
+                builder.Prompts.choice(session, "Choose an option: ", 
+                        'Fetch channel list|FetchMembersList|FetchTeamInfo(at Bot in team');        
+            }
+            else{
+                session.send("Test is not for your channel. You said: %s", session.message.text);
+            }
+        },
+        function(session, results){
+            switch(results.response.index){
+                case 0:
+                    session.beginDialog('FetchChannelList');
+                    break;
+                case 1:
+                    session.beginDialog('FetchMembersList');
+                    break;
+                case 2:
+                    session.beginDialog('FetchTeamInfo');
+                    break;
+                default:
+                    session.endDialog();
+                    break;
+            }
+        }
+    ]);
+</code>
+
+<code>
+bot.dialog('*:FetchMembersList', function (session) {
+    var conversationId = session.message.address.conversation.id;
+    connector.fetchMembers(session.message.address.serviceUrl, conversationId, function (err, result) {
+        if (err) {
+            session.endDialog('There is some error');
+        }
+        else {
+            session.endDialog('%s', JSON.stringify(result));
+        }
+    });
+});
+<code>
+
+It would return as:
+[{
+    "id":"29:181ma8aIlS30LnNNlX_qYy3NPmNCk3UFhApZX41a6w9If7xI2zOIBTvf1EEmu1M_zi-ICcNaxHxNFcUDOl-XqTQ",
+    "objectId":"158ae709-8052-4ebd-afc0-6f64211b3fdf",
+    "name":"Purna Chandra Panda",
+    "givenName":"Purna Chandra",
+    "surname":"Panda",
+    "email":"pupanda@microsoft.com",
+    "userPrincipalName":"pupanda@microsoft.com"
+}]
+
+<code>
+bot.dialog('*:FetchMembersList', function (session) {
+    var conversationId = session.message.address.conversation.id;
+    connector.fetchMembers(session.message.address.serviceUrl, conversationId, function (err, result) {
+        if (err) {
+            session.endDialog('There is some error');
+        }
+        else {
+            session.endDialog('Email Address: %s', result[0].email);
+        }
+    });
+});
+<code>
+
+It would return as:
+Email Address: pupanda@microsoft.com
+
+## Resources
+
+Read the following for more clarity:
+<ul>
+    <li>https://stackoverflow.com/questions/49915313/how-to-get-user-email-by-id-on-microsoft-bot-framework</li>
+    <li>https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/bots/bots-context#nodejs-example</li>
+    <li>https://github.com/OfficeDev/BotBuilder-MicrosoftTeams/blob/master/Node/samples/app.js</li>
+</ul>
