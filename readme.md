@@ -83,10 +83,10 @@ added 38 packages and updated 6 packages in 5.004s
 
 "botbuilder-teams" is an extension to "botbuilder" package. So, it is perfectly safe to be used along with other channels. For MS Teams specific channel, you can have your explicit check.
 
-```
+```javascript
             bot.dialog('/', [
                 function(session){
-                    #if(session.message.source==='msteams'){
+                    **if(session.message.source==='msteams')**{
                         builder.Prompts.choice(session, "Choose an option: ", 
                                 'Fetch channel list|FetchMembersList|FetchTeamInfo(at Bot in team');        
                     }
@@ -115,7 +115,7 @@ added 38 packages and updated 6 packages in 5.004s
 
 ==
 
-<code>
+```javascript
 bot.dialog('*:FetchMembersList', function (session) {
     var conversationId = session.message.address.conversation.id;
     connector.fetchMembers(session.message.address.serviceUrl, conversationId, function (err, result) {
@@ -127,9 +127,10 @@ bot.dialog('*:FetchMembersList', function (session) {
         }
     });
 });
-<code>
+```
 
 It would return as:
+```
 [{
     "id":"29:181ma8aIlS30LnNNlX_qYy3NPmNCk3UFhApZX41a6w9If7xI2zOIBTvf1EEmu1M_zi-ICcNaxHxNFcUDOl-XqTQ",
     "objectId":"158ae709-8052-4ebd-afc0-6f64211b3fdf",
@@ -139,8 +140,9 @@ It would return as:
     "email":"pupanda@microsoft.com",
     "userPrincipalName":"pupanda@microsoft.com"
 }]
+```
 
-<code>
+```javascript
 bot.dialog('*:FetchMembersList', function (session) {
     var conversationId = session.message.address.conversation.id;
     connector.fetchMembers(session.message.address.serviceUrl, conversationId, function (err, result) {
@@ -152,16 +154,17 @@ bot.dialog('*:FetchMembersList', function (session) {
         }
     });
 });
-<code>
+```
 
 It would return as:
+```
 Email Address: pupanda@microsoft.com
+```
 
 ## Resources
 
 Read the following for more clarity:
-<ul>
-    <li>https://stackoverflow.com/questions/49915313/how-to-get-user-email-by-id-on-microsoft-bot-framework</li>
-    <li>https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/bots/bots-context#nodejs-example</li>
-    <li>https://github.com/OfficeDev/BotBuilder-MicrosoftTeams/blob/master/Node/samples/app.js</li>
-</ul>
+* https://stackoverflow.com/questions/49915313/how-to-get-user-email-by-id-on-microsoft-bot-framework
+* https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/bots/bots-context#nodejs-example
+* https://github.com/OfficeDev/BotBuilder-MicrosoftTeams/blob/master/Node/samples/app.js
+
