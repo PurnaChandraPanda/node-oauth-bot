@@ -83,35 +83,35 @@ added 38 packages and updated 6 packages in 5.004s
 
 "botbuilder-teams" is an extension to "botbuilder" package. So, it is perfectly safe to be used along with other channels. For MS Teams specific channel, you can have your explicit check.
 
-<p>
-    bot.dialog('/', [
-        function(session){
-            #if(session.message.source==='msteams'){
-                builder.Prompts.choice(session, "Choose an option: ", 
-                        'Fetch channel list|FetchMembersList|FetchTeamInfo(at Bot in team');        
-            }
-            else{
-                session.send("Test is not for your channel. You said: %s", session.message.text);
-            }
-        },
-        function(session, results){
-            switch(results.response.index){
-                case 0:
-                    session.beginDialog('FetchChannelList');
-                    break;
-                case 1:
-                    session.beginDialog('FetchMembersList');
-                    break;
-                case 2:
-                    session.beginDialog('FetchTeamInfo');
-                    break;
-                default:
-                    session.endDialog();
-                    break;
-            }
-        }
-    ]);
-</p>
+```
+            bot.dialog('/', [
+                function(session){
+                    #if(session.message.source==='msteams'){
+                        builder.Prompts.choice(session, "Choose an option: ", 
+                                'Fetch channel list|FetchMembersList|FetchTeamInfo(at Bot in team');        
+                    }
+                    else{
+                        session.send("Test is not for your channel. You said: %s", session.message.text);
+                    }
+                },
+                function(session, results){
+                    switch(results.response.index){
+                        case 0:
+                            session.beginDialog('FetchChannelList');
+                            break;
+                        case 1:
+                            session.beginDialog('FetchMembersList');
+                            break;
+                        case 2:
+                            session.beginDialog('FetchTeamInfo');
+                            break;
+                        default:
+                            session.endDialog();
+                            break;
+                    }
+                }
+            ]);
+```
 
 ==
 
