@@ -86,7 +86,7 @@ added 38 packages and updated 6 packages in 5.004s
 ```javascript
             bot.dialog('/', [
                 function(session){
-                    **if(session.message.source==='msteams')**{
+                    if(session.message.source==='msteams'){
                         builder.Prompts.choice(session, "Choose an option: ", 
                                 'Fetch channel list|FetchMembersList|FetchTeamInfo(at Bot in team');        
                     }
