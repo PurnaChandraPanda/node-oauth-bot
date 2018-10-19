@@ -83,7 +83,7 @@ added 38 packages and updated 6 packages in 5.004s
 
 "botbuilder-teams" is an extension to "botbuilder" package. So, it is perfectly safe to be used along with other channels. For MS Teams specific channel, you can have your explicit check.
 
-<code>
+<p>
     bot.dialog('/', [
         function(session){
             #if(session.message.source==='msteams'){
@@ -111,7 +111,9 @@ added 38 packages and updated 6 packages in 5.004s
             }
         }
     ]);
-</code>
+</p>
+
+==
 
 <code>
 bot.dialog('*:FetchMembersList', function (session) {
