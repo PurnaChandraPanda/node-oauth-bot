@@ -1,3 +1,6 @@
+It is true that there is no out of box support for pulling email id information in Teams channel (as compared to SfB channel). So, would have to go through custom code exercise to get "user" info pulled.
+
+
 ## Command line exercise
 
 ```
