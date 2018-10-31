@@ -7,9 +7,9 @@
             "id": "63d4b230-d2b4-11e8-8abb-fb52bbf72e2e",
             "name": "nodejs-oauth-bot",
             "type": "endpoint",
-            "appId": "900bb897-f6e8-48ff-9575-621bf148dad8",
-            "appPassword": "gfylUQO77{njkMMMO756~[*",
-            "endpoint": "https://ecf7a398.ngrok.io/api/messages"
+            "appId": "your-app-id",
+            "appPassword": "your-app-password",
+            "endpoint": "https://ecf7a398.ngrok.io/api/messages" //your message endpoint
         }
     ]
 }
